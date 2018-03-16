@@ -1,0 +1,71 @@
+<!DOCTYPE html>    
+    
+<html>    
+    
+    <head>    
+    
+        <meta charset="utf-8" />    
+    
+        <meta name="format-detection" content="telephone=no" />    
+    
+        <meta name="msapplication-tap-highlight" content="no" />    
+    
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes.    
+ See https://issues.apache.org/jira/browse/CB-4323 -->    
+    
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />    
+    
+        <link rel="stylesheet" type="text/css" href="css/index.css" />    
+    
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />    
+    
+        <style type="text/css" rel="stylesheet">    
+           #qrcode {    
+            width:300px;    
+            height:300px;    
+            margin-top:15px;    
+           }    '
+		   .app{
+		   height:500px;
+		   }
+        </style>    
+        <title>Hello World</title>    
+    
+    </head>    
+    
+    <body>    
+    
+        <div class="app">    
+           <div data-role="page" id="QrCode">      
+              <div data-role="header" data-position="fixed">      
+                <h1>QR Code Generator</h1>      
+              </div>      
+              <div role="main" class="ui-content" id="home-content">      
+                  <input id="text" type="text" style="width:80%" /><br />    
+                  <input type="button" value="Generate QR Code" style="width:80%" onclick="Generate();" /><br />    
+              <div id="qrcode"></div>    
+             </div>      
+           </div>      
+        </div>    
+<script type="text/javascript">    
+   function Generate(){    
+     var qrcode = new QRCode("qrcode");    
+     var TBCode = document.getElementById("text");    
+        
+    if (!TBCode.value) {    
+        alert("Input a text");    
+        TBCode.focus();    
+        return;    
+    }    
+    qrcode.makeCode(TBCode.value);    
+   }    
+</script>    
+        <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>    
+	
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+                <script type="text/javascript" src="js/index.js"></script>    
+    
+        <script type="text/javascript" src="js/qrcode.min.js"></script>    
+    </body>    
+    
+</html>   

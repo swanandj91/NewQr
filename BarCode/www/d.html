@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blank Hybrid App Project Template</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <style>
+        @-ms-viewport { width: 100vw ; zoom: 100% ; }                           
+        @viewport { width: 100vw ; zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; }                                    
+        @viewport { user-zoom: fixed ; }
+    </style>
+
+    <script src="lib/ft/fastclick.js"></script>
+
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+
+<body>
+    <button onclick="scanNow();">Scan</button>
+        
+    <script src="intelxdk.js"></script>         
+    <script src="cordova.js"></script>          
+    <script src="xhr.js"></script>              
+
+    <script src="js/app.js"></script>
+    <script src="js/init-app.js"></script>
+    <script src="js/init-dev.js"></script>
+
+    <script>
+        
+        function scanNow()
+        {
+            //this function launches the QR Code scanner.
+            intel.xdk.device.scanBarcode();
+        }
+        
+        //this event is fired when scanning is completed
+        document.addEventListener("intel.xdk.device.barcode.scan",function(evt){
+            if (evt.success == true) {
+                //successful scan
+                
+                alert(evt.codedata);
+            }
+            else 
+            {
+                //failed scan
+                alert("Please try again");
+            }
+        },false);
+    </script>
+</body>
+</html>
